@@ -1,0 +1,25 @@
+---
+- hosts: group1
+  tasks:
+  
+  - name: installing java
+    yum: name=java state=present
+
+  - name: downloding tomcat tar file
+    get_url:
+      url: http://mirrors.estointernet.in/apache/tomcat/tomcat-9/v9.0.27/bin/apache-tomcat-9.0.27.tar.gz
+      dest: /opt/apache-tomcat-9.0.27.tar.gz
+  - name: Unarchive a file that is already on the remote machine
+    unarchive:
+      src: /opt/apache-tomcat-9.0.27.tar.gz
+      dest: /opt
+      remote_src: yes
+
+  - name: starting the tomcat service
+    script: /opt/apache-tomcat-9.0.27/bin/startup.sh
+
+  - name: deploy the tomcat application
+    get_url:
+      url: https://www.oracle.com/webfolder/technetwork/tutorials/obe/fmw/wls/12c/12_1_3/03/apps/benefits.war
+      dest: /opt/apache-tomcat-9.0.27.tar.gz/webapps/benefits.war
+

@@ -1,0 +1,17 @@
+---
+- hosts: all
+  #gather_fact: false
+  vars:
+
+    admin_name: rakesh
+
+  tasks:
+
+  - name: push imp template
+
+    template:
+
+      src: imp.j2
+      dest: /tmp/imp.conf      
+
+            

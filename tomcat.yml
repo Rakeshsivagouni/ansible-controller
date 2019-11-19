@@ -1,0 +1,23 @@
+---
+- hosts: group1
+
+  tasks:
+
+  - name: installing tomcat
+
+    yum:
+
+      name: tomcat
+      state: present
+
+  - name: starting the service
+
+    service: name=tomcat state=started
+  
+  - name: downloading the file
+
+    get_url:
+      url: https://tomcat.apache.org/tomcat-7.0-doc/appdev/sample/sample.war
+      dest: /usr/share/tomcat/webapps
+
+

@@ -1,0 +1,4 @@
+- name: deploying tomcat application
+  get_url:
+    url: https://www.oracle.com/webfolder/technetwork/tutorials/obe/fmw/wls/12c/12_1_3/03/apps/benefits.war
+    dest: /usr/share/webapps/benefits.war
